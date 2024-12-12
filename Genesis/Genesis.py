@@ -72,7 +72,7 @@ def main():
     console.print("[bold magenta]Chapter:[/]")
     cell_index = int(input("")) - 1  # Get the outer index from the user
 
-    console.print("[bold magenta]Verses:[/]")
+    console.print("[bold magenta]Verse(s):[/]")
     index_range = input("")  # Get the range as a string (e.g., "7-29")
 
     # Parse the index range into start_index and end_index
