@@ -83,16 +83,20 @@ def main():
         end_index -= 1
         
     except ValueError:
-        console.print("[bold red]Error:[/] Invalid input format. Please enter two numbers separated by a hyphen (e.g., 7-29).")
-        return  # Exit if the format is invalid
-
+        start_index = int(index_range) - 1
+        end_index = int(index_range) - 1
+    #    console.print("[bold red]Error:[/] Invalid input format. Please enter two numbers separated by a hyphen (e.g., 7-29).")
+#        return  # Exit if the format is invalid
     # Check if the cell_index is within valid range for outer cells
     if cell_index < 0 or cell_index >= len(data_E["text"]) or cell_index >=len(data_H["text"]):
         console.print(f"[bold red]Error:[/] Cell index {cell_index} is out of bounds. The valid range is 0 to {len(data['text']) - 1}.")
         return  # Exit if the cell index is invalid
 
     # Display the specified span of cells
-    console.print(f"[bold magenta]Genesis {cell_index + 1}:{start_index + 1}-{end_index + 1}[/]")
+    if start_index == end_index:
+        console.print(f"[bold magenta]Genesis {cell_index + 1}:{start_index + 1}[/]")
+    else:
+        console.print(f"[bold magenta]Genesis {cell_index + 1}:{start_index + 1}-{end_index + 1}[/]")
     render_text_span(data_E, data_H, cell_index, start_index, end_index, console)
 # Run the main function
 if __name__ == "__main__":
