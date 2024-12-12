@@ -35,8 +35,10 @@ def render_text_span(json_data_english, json_data_hebrew, cell_index, start_inde
                     # Parse and render HTML content
                     parsed_content_E = parse_html(cell_content_E)
                     parsed_content_E = re.sub(r'<.*?>', '', parsed_content_E)
+                    parsed_content_E = f"[bold blue]{parsed_content_E}[/]"
                     parsed_content_H = parse_html(cell_content_H)
-                    console.print(Panel(parsed_content_E, title=f"Genesis {cell_index + 1}:{inner_index + 1}", expand=False))
+                    parsed_content_H = f"[bold green]{parsed_content_H}[/]"
+                    console.print(Panel(parsed_content_E, title=f"[bold yellow]Genesis {cell_index + 1}:{inner_index + 1}[/]", expand=False))
                     console.print(Panel(parsed_content_H, expand=False))
             else:
                 console.print("[bold red]Error:[/] The selected outer cell is not a list.")
