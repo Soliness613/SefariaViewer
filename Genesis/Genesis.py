@@ -2,6 +2,7 @@ from rich.console import Console
 from rich.panel import Panel
 from bs4 import BeautifulSoup
 import json
+import re
 
 # Initialize the console for rich text rendering
 console = Console()
@@ -33,6 +34,7 @@ def render_text_span(json_data_english, json_data_hebrew, cell_index, start_inde
                     cell_content_H = ' '.join(cell_content_H)
                     # Parse and render HTML content
                     parsed_content_E = parse_html(cell_content_E)
+                    parsed_content_E = re.sub(r'<.*?>', '', parsed_content_E)
                     parsed_content_H = parse_html(cell_content_H)
                     console.print(Panel(parsed_content_E, title=f"Genesis {cell_index + 1}:{inner_index + 1}", expand=False))
                     console.print(Panel(parsed_content_H, expand=False))
