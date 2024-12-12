@@ -44,7 +44,7 @@ def render_text_span(json_data_english, json_data_hebrew, cell_index, start_inde
             else:
                 console.print("[bold red]Error:[/] The selected outer cell is not a list.")
         except IndexError:
-            console.print(f"[bold red]Error:[/] Index out of bounds. Cell index: {cell_index}, Start index: {start_index}, End index: {end_index}.")
+            console.print(f"[bold red]Error:[/] Index out of bounds. Genesis {cell_index + 1} has {len(outer_cell_E)} verses.")
     else:
         console.print("[bold red]Error:[/] No 'text' array found in JSON or it's not a list.")
 
