@@ -22,7 +22,7 @@ def render_text_span(json_data_english, json_data_hebrew, cell_index, start_inde
             if isinstance(outer_cell_E, list):
                         # Check if the range is within bounds
                 if start_index < 0 or end_index >= len(outer_cell_E):
-                    console.print(f"[bold red]Error:[/] Index out of bounds. Valid range for inner cells is 0 to {len(outer_cell) - 1}.")
+                    console.print(f"[bold red]Error:[/] Valid range for verses in Genesis {cell_index + 1} is 1 to {len(outer_cell_E)}.")
                     return
                 
                 # Render the inner cells in the specified range
@@ -89,7 +89,7 @@ def main():
 #        return  # Exit if the format is invalid
     # Check if the cell_index is within valid range for outer cells
     if cell_index < 0 or cell_index >= len(data_E["text"]) or cell_index >=len(data_H["text"]):
-        console.print(f"[bold red]Error:[/] Cell index {cell_index} is out of bounds. The valid range is 0 to {len(data['text']) - 1}.")
+        console.print(f"[bold red]Error:[/] Chapter {cell_index} is out of bounds. The valid range is 1 to {len(data['text'])}.")
         return  # Exit if the cell index is invalid
 
     # Display the specified span of cells
