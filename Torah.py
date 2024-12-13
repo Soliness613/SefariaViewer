@@ -82,7 +82,7 @@ def render_text_span(json_data_english, json_data_hebrew, reference, colors, con
 
 # Main function
 def main():
-    user_input = input("Enter reference (e.g., Genesis 32:4, Genesis 32:4-13, Genesis 32:4-36:43): ")
+    user_input = input(f"Enter reference (e.g., Genesis 32:4, Genesis 32:4-13, Genesis 32:4-36:43):\n\n")
 
     try:
         reference = parse_reference(user_input)
