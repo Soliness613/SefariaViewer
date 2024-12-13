@@ -46,7 +46,7 @@ def render_text_span(json_data_english, json_data_hebrew, cell_index, console):
                         parsed_content_combined = f"{parsed_content_E}\n\n{parsed_content_H}"
                         
                         # Display the content in a Rich Panel
-                        console.print(Panel(parsed_content_combined, title=f"{cell_index + 1}:{inner_index + 1}", expand=False))
+                        console.print(Panel(parsed_content_combined, title=f"{cell_index + 1}:{inner_index + 1}", border_style="green", expand=False))
                     
                     
             else:
