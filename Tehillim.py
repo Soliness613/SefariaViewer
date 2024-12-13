@@ -58,8 +58,8 @@ def render_text_span(json_data_english, json_data_hebrew, cell_index, console):
 # Main function
 def main():
     # Specify Versions
-    english_file_path = f"tehillim_en.json"
-    hebrew_file_path = f"tehillim_he.json"
+    english_file_path = f"Tehillim_en.json"
+    hebrew_file_path = f"Tehillim_he.json"
 
     # Try to load the JSON file
     try:

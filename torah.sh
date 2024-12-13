@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 torah.py
+python3 Torah.py
