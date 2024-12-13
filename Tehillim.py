@@ -35,6 +35,7 @@ def render_text_span(json_data_english, json_data_hebrew, cell_index, console):
                         parsed_content_E = parse_html(cell_content_E)
                         parsed_content_E = re.sub(r'L<small>ORD</small>','[bold yellow]LORD[/]', parsed_content_E)
                         parsed_content_E = re.sub(r'<br\s*/?>', '\n', parsed_content_E)
+                        parsed_content_E = re.sub(r'<sup class="footnote-marker">.*?</sup><i class="footnote">.*?</i>', '', parsed_content_E)
                         parsed_content_E = re.sub(r'<.*>', '', parsed_content_E) 
                         parsed_content_E = f"[bold blue]{parsed_content_E}[/]"
                         
