@@ -1,0 +1,6 @@
+colors:
+    title: "blue"
+    border: "red" #no bolds allowed for border color
+    english: "yellow"
+    hebrew: "green"
+    namesOfGod: "green"

@@ -3,6 +3,7 @@ from rich.panel import Panel
 from bs4 import BeautifulSoup
 import json
 import re
+import yaml
 
 # Initialize the console for rich text rendering
 console = Console()
@@ -13,7 +14,7 @@ def parse_html(content):
     return str(soup)
 
 # Function to display a specific span of cells from the "text" array
-def render_text_span(json_data_english, json_data_hebrew, cell_index, console):
+def render_text_span(json_data_english, json_data_hebrew, cell_index, colors, console):
     if "text" in json_data_english and isinstance(json_data_english["text"], list):
         try:
             # Fetch the specific outer list
@@ -33,20 +34,24 @@ def render_text_span(json_data_english, json_data_hebrew, cell_index, console):
                         
                         # Parse and render HTML content
                         parsed_content_E = parse_html(cell_content_E)
-                        parsed_content_E = re.sub(r'L<small>ORD</small>','[bold yellow]LORD[/]', parsed_content_E)
+                        pattern1 = r'L<small>ORD</small>'
+                        replacement1 = f"[{colors['namesOfGod']}]LORD[/]"
+                        parsed_content_E = re.sub(pattern1, replacement1, parsed_content_E)
                         parsed_content_E = re.sub(r'<br\s*/?>', '\n', parsed_content_E)
                         parsed_content_E = re.sub(r'<sup class="footnote-marker">.*?</sup><i class="footnote">.*?</i>', '', parsed_content_E)
                         parsed_content_E = re.sub(r'<.*>', '', parsed_content_E) 
-                        parsed_content_E = f"[bold blue]{parsed_content_E}[/]"
+                        parsed_content_E = f"[{colors['english']}]{parsed_content_E}[/]"
                         
                         parsed_content_H = parse_html(cell_content_H)
-                        parsed_content_H = f"[bold green]{parsed_content_H}[/]"
+                        parsed_content_H = f"[{colors['hebrew']}]{parsed_content_H}[/]"
                         
                         # Combine parsed content with a line break as a plain string
                         parsed_content_combined = f"{parsed_content_E}\n\n{parsed_content_H}"
                         
                         # Display the content in a Rich Panel
-                        console.print(Panel(parsed_content_combined, title=f"{cell_index + 1}:{inner_index + 1}", border_style="green", expand=False))
+                        title_color = f"{colors['title']}"
+                        border_color = f"{colors['border']}"
+                        console.print(Panel(parsed_content_combined, title=f"[{title_color}]{cell_index + 1}:{inner_index + 1}", border_style=f"{border_color}", expand=False))
                     
                     
             else:
@@ -61,6 +66,13 @@ def main():
     # Specify Versions
     english_file_path = f"Tehillim_en.json"
     hebrew_file_path = f"Tehillim_he.json"
+
+    # Load config gile
+
+    with open ('config.yaml', 'r') as file:
+        config = yaml.safe_load(file)
+
+    colors = config["colors"]
 
     # Try to load the JSON file
     try:
@@ -84,7 +96,7 @@ def main():
     if cell_index < 0 or cell_index >= len(data_E["text"]) or cell_index >=len(data_H["text"]):
         console.print(f"[bold red]Error:[/] Chapter {cell_index} is out of bounds. The valid range is 1 to {len(data['text'])}.")
         return  # Exit if the cell index is invalid
-    render_text_span(data_E, data_H, cell_index, console)
+    render_text_span(data_E, data_H, cell_index, colors, console)
 # Run the main function
 if __name__ == "__main__":
     main()
