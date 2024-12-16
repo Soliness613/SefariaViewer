@@ -1,3 +1,5 @@
+#Dependencies: python3, fzf
+
 # SefariaViewer
 
 # This is a project to ultimately create an offline means of viewing the documents hosted on sefaria.org via a TUI. It is implementing the rich and BS4 python libraries, and using files from the Sefaria github. 
@@ -28,3 +30,8 @@
 
 # Torah.py: Takes input in 3 formats to display text from the 5 Books of Moses.
 # torah.sh: similarly, just here for the convenience of runnning ./torah.sh.
+
+#the apiTesting directory is for experimenting. currently it has one
+#interesting thing-- getRelated.sh, which can print the related texts
+#from sefaria for a given verse, and does so inside of an fzf UI, 
+#where one could be selected. 
