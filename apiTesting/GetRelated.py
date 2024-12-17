@@ -44,3 +44,15 @@ if __name__ == "__main__":
 #a variable called related. the variable related["links"[0]["index_title"]] is the title of the 
 #related text. related["links"][0]["ref"] is the specific reference i.e., "Rashbam on Genesis 
 #37:2:1". 
+#Text locations in Sefaria-Export/json:
+#Rashbam on Genesis, for instance, is found in 
+#/Sefaria-Export/json/Tanakh/Rishonim\ on\ Tanakh/Rashbam/Torah/Rashbam\ on\ Genesis/[English or Hebrew]/
+
+#pulling from the Index API endpoint for "Rashbam on Genesis" gives us a json
+#structure that includes "title": "Rashbam on Genesis" and catergories: ["Tanakh"
+#, "Rishonim on Tanakh", "Rashbam", "Torah"].
+
+#so the filepath could be rendered as f"/{index["categories"'[0]]}/{index["categories"]#[1]}/{index["categories"][2]}/{index["categories"[3]]}/English"
+
+#The for loop needs to somehow get_index for every link in related and preview the 
+#text with the expected Panel formatting.
